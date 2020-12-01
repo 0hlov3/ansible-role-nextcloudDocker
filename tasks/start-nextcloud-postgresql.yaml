@@ -1,0 +1,25 @@
+---
+- name: Start nextcloud postgresql Docker Container
+  docker_container:
+    name: "{{ nextcloud_postgres_container_name }}"
+    image: "{{ nextcloud_postgres_container_image }}:{{ nextcloud_postgres_container_tag }}"
+    volumes:
+      - /docker/nextcloud/postgresql/data:/var/lib/postgresql/data:rw
+    env:
+      POSTGRES_USER: "{{ nextcloud_postgres_user }}"
+      POSTGRES_PASSWORD: "{{ nextcloud_postgres_password }}"
+      POSTGRES_DB: "{{ nextcloud_postgres_database }}"
+    network_mode: "{{ nextcloud_network_name }}"
+    networks:
+      - name: "{{ nextcloud_network_name }}"
+        aliases:
+          - "{{ nextcloud_postgres_container_name }}"
+    networks_cli_compatible: yes
+    purge_networks: yes
+    state: started
+    restart_policy: "unless-stopped"
+    restart: yes
+    labels:
+      network: "{{ nextcloud_network_name }}"
+      project: "{{ nextcloud_container_name }}"
+...

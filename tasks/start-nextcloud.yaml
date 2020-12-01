@@ -1,0 +1,31 @@
+---
+- name: Start nextcloud Docker Container
+  docker_container:
+    name: "{{ nextcloud_container_name }}"
+    image: "{{ nextcloud_container_image }}:{{ nextcloud_container_tag }}"
+    ports:
+      - "127.0.0.1:8083:80"
+    volumes:
+     - /docker/nextcloud/data:/var/www/html:rw
+    env:
+      POSTGRES_DB: "{{ nextcloud_postgres_database }}"
+      POSTGRES_USER: "{{ nextcloud_postgres_user }}"
+      POSTGRES_PASSWORD: "{{ nextcloud_postgres_password }}"
+      POSTGRES_HOST: "{{ nextcloud_postgres_container_name }}"
+      REDIS_HOST: "{{ nextcloud_redis_container_name }}"
+    network_mode: "{{ nextcloud_network_name }}"
+    networks:
+      - name: "{{ nextcloud_network_name }}"
+        aliases:
+          - "{{ nextcloud_container_name }}"
+        links:
+          - "{{ nextcloud_postgres_container_name }}:db"
+    networks_cli_compatible: yes
+    purge_networks: yes
+    state: started
+    restart_policy: "unless-stopped"
+    restart: yes
+    labels:
+      network: "{{ nextcloud_network_name }}"
+      project: "{{ nextcloud_container_name }}"
+...

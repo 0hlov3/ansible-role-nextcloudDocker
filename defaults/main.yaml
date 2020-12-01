@@ -1,0 +1,18 @@
+#Nextcloud
+nextcloud_network_name: "nextcloud"
+nextcloud_container_name: "nextcloud"
+nextcloud_container_image: "nextcloud"
+nextcloud_container_tag: "20-apache"
+
+#Database
+nextcloud_postgres_container_name: "nextcloud-postgres"
+nextcloud_postgres_container_image: "postgres"
+nextcloud_postgres_container_tag: "11-alpine"
+nextcloud_postgres_user: "nexctloud"
+nextcloud_postgres_password: "ChangeME!"
+nextcloud_postgres_database: "nextcloud"
+
+#Redis Settings
+nextcloud_redis_container_name: "nextcloud-redis"
+nextcloud_redis_container_image: "redis"
+nextcloud_redis_container_tag: "5"

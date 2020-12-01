@@ -1,0 +1,10 @@
+---
+- name: Create nextcloud docker network
+  docker_network:
+    name: "{{ nextcloud_network_name }}"
+    ipam_driver: default
+    attachable: yes
+    labels:
+      network: "{{ nextcloud_network_name }}"
+      project: "{{ nextcloud_container_name }}"
+...
