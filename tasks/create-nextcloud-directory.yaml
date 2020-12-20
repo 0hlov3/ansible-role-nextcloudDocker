@@ -1,0 +1,15 @@
+---
+- name: Create directory for Nextcloud
+  file:
+    path: "{{ nextcloud_folder }}"
+    state: directory
+    recurse: yes
+    mode: '0755'
+
+- name: Create directory for Nextcloud PostgreSQL
+  file:
+    path: "{{ nextcloud_postgres_folder }}"
+    state: directory
+    recurse: yes
+    mode: '0755'
+...

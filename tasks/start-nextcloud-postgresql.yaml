@@ -4,7 +4,7 @@
     name: "{{ nextcloud_postgres_container_name }}"
     image: "{{ nextcloud_postgres_container_image }}:{{ nextcloud_postgres_container_tag }}"
     volumes:
-      - /docker/nextcloud/postgresql/data:/var/lib/postgresql/data:rw
+      - "{{ nextcloud_postgres_folder }}:/var/lib/postgresql/data:rw"
     env:
       POSTGRES_USER: "{{ nextcloud_postgres_user }}"
       POSTGRES_PASSWORD: "{{ nextcloud_postgres_password }}"
