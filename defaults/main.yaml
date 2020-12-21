@@ -3,6 +3,7 @@ nextcloud_network_name: "nextcloud"
 nextcloud_container_name: "nextcloud"
 nextcloud_container_image: "nextcloud"
 nextcloud_container_tag: "20-apache"
+nextcloud_container_ports: "127.0.0.1:8083:80"
 nextcloud_folder: "/docker/nextcloud/data"
 
 #Database

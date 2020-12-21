@@ -4,7 +4,7 @@
     name: "{{ nextcloud_container_name }}"
     image: "{{ nextcloud_container_image }}:{{ nextcloud_container_tag }}"
     ports:
-      - "127.0.0.1:8083:80"
+      - "{{ nextcloud_container_ports }}"
     volumes:
      - "{{ nextcloud_folder }}:/var/www/html:rw"
     env:
