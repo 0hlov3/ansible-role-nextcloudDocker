@@ -3,5 +3,5 @@
 - include_tasks: create-nextcloud-network.yaml
 - include_tasks: start-nextcloud-postgresql.yaml
 - include_tasks: start-nextcloud-redis.yaml
-- include_tasks: start-nexctloud.yaml
+- include_tasks: start-nextcloud.yaml
 ...
