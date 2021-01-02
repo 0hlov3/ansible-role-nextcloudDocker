@@ -1,12 +1,25 @@
-{{ nextloud_hostname }} {
+####################################
+# This file is managed by ansible
+####################################
+
+{{ nextcloud_caddy.nextcloud_caddy_fqdn }} {
+{% if nextcloud_caddy.nextcloud_caddy_log is defined and nextcloud_caddy.nextcloud_caddy_log != "" %}
+  {{ nextcloud_caddy.nextcloud_caddy_log }}
+{% else -%}
   log {
         output discard
   }
+{% endif %}
 
-{{ if caddy_tls is defined and caddy_tls != "" }}
-  tls {{ caddy_tls }}
-{{ endif }}
+{% if nextcloud_caddy.nextcloud_caddy_tls is defined and nextcloud_caddy.nextcloud_caddy_tls != "" %}
+  tls {{ nextcloud_caddy.nextcloud_caddy_tls }}
+{% endif %}
 
+{% if nextcloud_caddy.nextcloud_caddy_header is defined and nextcloud_caddy.nextcloud_caddy_header != "" %}
+  header {
+    {{ nextcloud_caddy.nextcloud_caddy_header }}
+  }
+{% else -%}
   header {
         # Enable HTTP Strict Transport Security (HSTS) to force clients to always connect via HTTPS
         Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
@@ -32,6 +45,7 @@
         # Remove Server header
         -Server
   }
+{% endif %}
 
   handle {
         encode zstd gzip

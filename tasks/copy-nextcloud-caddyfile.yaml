@@ -1,5 +1,5 @@
 - name: Copy nextcloud caddyfile
   template:
-      dest: "{{ nextcloud_caddyfile_path }}"
-      src: nextclouad.caddy.j2
+      dest: "{{ nextcloud_caddyfile_path }}/nextclouad.caddy"
+      src: nextcloud.caddy.j2
   when: (nextcloud_caddyfile_path is defined) and (nextcloud_caddyfile_path|length > 0)

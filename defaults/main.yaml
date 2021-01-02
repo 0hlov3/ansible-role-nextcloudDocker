@@ -20,3 +20,8 @@ nextcloud_postgres_folder: "/docker/nextcloud/postgresql/data"
 nextcloud_redis_container_name: "nextcloud-redis"
 nextcloud_redis_container_image: "redis"
 nextcloud_redis_container_tag: "5"
+
+nextcloud_caddyfile_path: "/docker/caddy/caddyfiles/"
+nextcloud_caddy:
+  nextcloud_caddy_tls: ""
+  nextcloud_caddy_fqdn: ""

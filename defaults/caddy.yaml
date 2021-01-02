@@ -1,3 +1,0 @@
-nextcloud_caddyfile_path: "/docker/caddy/caddyfiles/"
-caddy:
-  caddy_tls: ""
