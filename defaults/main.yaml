@@ -1,3 +1,4 @@
+---
 #Nextcloud
 nextcloud_network_name: "nextcloud"
 nextcloud_container_name: "nextcloud"
@@ -25,3 +26,4 @@ nextcloud_caddyfile_path: "/docker/caddy/caddyfiles/"
 nextcloud_caddy:
   nextcloud_caddy_tls: ""
   nextcloud_caddy_fqdn: ""
+...
